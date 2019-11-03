@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Trend.NXT HTML5 :: L1 :: Assignment 1</title>
-
-        <style>
-            table, th, td {
-                border: 1px solid #000000;
-            }
-            th, td {
-                padding: 5px;
-                text-align: left;
-            }
-        </style>
-    </head>
-
-    <body>
-
+<head>
+    <meta charset="utf-8"/>
+    <title>Stock Trading Application</title>
+    <style>
+        table {
+            border: 1px solid black;
+            width: 20%;
+        }
+        td {
+            border: 1px solid black;
+            text-transform: uppercase;
+        }
+        th {
+            font-weight: bold;
+            border: 1px solid black;
+            text-transform: uppercase;
+        }
+    </style>
+    <script>
+        function validateStock() {
+            var quantity = document.forms['stock']['qty'].value;
+            quantity = parseInt(quantity);
+            if(quantity < 10 || quantity > 100 || quantity % 10 !== 0)
+                alert("INVALID QUANTITY");
+        }
+    </script>
+</head>
+<body style="margin: 0.5in;">
+<div>
+    <table id="table">
+        <tr>
+            <th>ticker</th>
+            <th>price</th>
+        </tr>
+        <tr>
+            <td>wipro</td>
+            <td>298.45</td>
+        </tr>
+        <tr>
+            <td>infy</td>
+            <td>949.95</td>
+        </tr>
+        <tr>
+            <td>tcs</td>
+            <td>2713.70</td>
+        </tr>
+        <tr>
+            <td>techm</td>
+            <td>485.85</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <form name="stock" onsubmit="validateStock()">
+        <h1>Stock Trading</h1>
         <table>
             <tr>
-              <th>TICKER</th>
-              <th>PRICE</th>
+                <td style="text-transform: capitalize;">ticker :</td>
+                <td style="border:1px solid black"><input style="text-transform:uppercase;" type="text"</input></td>
             </tr>
             <tr>
-              <td>WIPRO</td>
-              <td>298.45</td>
+                <td style="text-transform: capitalize;">quantity:</td>
+                <td style="border:1px solid black"><input style="size='10';" type="Integer" length="40" name="qty"></input></td>
             </tr>
+            
             <tr>
-              <td>INFY</td>
-              <td>949.95</td>
-            </tr>
-            <tr>
-              <td>TCS</td>
-              <td>2713.70</td>
-            </tr>
-            <tr>
-              <td>TECHM</td>
-              <td>485.85</td>
+                
+                <td style="border: 1px solid black"><input type="submit" name="submit" value="Submit"></td>
             </tr>
         </table>
-
-
-        <h1>Stock Trading</h1>
-        <form>
-            <table>
-                <tr>
-                    <td>Ticker:</td>
-                    <td><input type="text" name="tickersymbol" list="tickers" required></td>
-                </tr>
-                <tr>
-                    <td>Quantity:</td>
-                    <td><input type="number" name="quantity" min="10" max="100" pattern="[0-9]" step="10" required></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="submit"></td>
-                </tr>
-            </table>
-
-            <datalist id="tickers">
-                <option value="WIPRO">
-                <option value="INFY">
-                <option value="TCS">
-                <option value="TECHM">
-            </datalist>
-        </form>
-
-    </body>
+    </form>
+</div>
+</body>
 </html>
